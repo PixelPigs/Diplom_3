@@ -6,32 +6,32 @@ from pages.base_page import BasePage
 
 class MainPage(BasePage):
 
-    @allure.description('Нажать на кнопку Конструктор')
+    @allure.step('Нажать на кнопку Конструктор')
     def click_constructor(self):
         self.find_element_and_click(MainLocators.BUTTON_CONSTRUCTOR)
 
-    @allure.description('Нажать на кнопку Лента заказов')
+    @allure.step('Нажать на кнопку Лента заказов')
     def click_order_feed(self):
         self.find_element_and_click(MainLocators.BUTTON_ORDER_FEED)
 
-    @allure.description('Нажать на Ингредиент')
+    @allure.step('Нажать на Ингредиент')
     def click_ingredient(self):
         self.find_element_and_click(MainLocators.BUN_INGREDIENT)
 
-    @allure.description('Получаем значение каунтера')
+    @allure.step('Получаем значение каунтера')
     def get_counter_value(self):
         return self.get_text(MainLocators.COUNTER)
 
-    @allure.description('Добавить ингредиент')
+    @allure.step('Добавить ингредиент')
     def add_filling_to_order(self):
         self.wait_element_to_be_clickable(MainLocators.BUN_INGREDIENT)
         self.drag_and_drop_to_element(MainLocators.BUN_INGREDIENT, MainLocators.CONSTRUCTOR_BASKET)
 
-    @allure.description('Нажать на кнопку Оформить заказ')
+    @allure.step('Нажать на кнопку Оформить заказ')
     def click_order_button(self):
         self.move_to_element_and_click(MainLocators.ORDER_BUTTON)
 
-    @allure.description('Проверяем, что заказ оформлен')
+    @allure.step('Проверяем, что заказ оформлен')
     def get_order_number(self):
         self.visibility_of_element(MainLocators.ORDER_NUMBER)
         return self.get_text(MainLocators.ORDER_NUMBER)

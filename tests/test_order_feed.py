@@ -1,14 +1,9 @@
-import time
-
 import allure
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 from conftest import *
-from data.urls import Urls
 from locators.order_feed_locators import OrderFeedLocators
-from locators.profile_locators import ProfileLocators
 
 
 class TestOrderFeed:
@@ -40,7 +35,7 @@ class TestOrderFeed:
         page_order_feed.make_order()
         page_order_feed.click_cross_order()
         page_order_feed.click_order_feed()
-        WebDriverWait(page_order_feed.driver, 10).until(ec.visibility_of_element_located(counter))
+        page_order_feed.visibility_of_element(counter)
         current_value_counter = page_order_feed.get_counter_value(counter)
         assert int(current_value_counter) > int(actual_value_counter)
 
